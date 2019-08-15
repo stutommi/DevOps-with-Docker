@@ -1,0 +1,7 @@
+command to start process = docker run -it --name exercise ubuntu
+
+commands to make it work:
+1. apt-get update
+2. apt-get install curl
+3. control+p & control+q (to detach STDOUT)
+4. docker exec -it exercise sh -c 'echo "Input website:"; read website; echo "Searching.."; sleep 1; curl http://$website;' 

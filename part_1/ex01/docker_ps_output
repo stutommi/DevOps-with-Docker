@@ -1,0 +1,4 @@
+CONTAINER ID        IMAGE               COMMAND                  CREATED             STATUS                          PORTS               NAMES
+2af1f14df637        mongo               "docker-entrypoint.s…"   5 minutes ago       Exited (0) About a minute ago                       relaxed_minsky
+21554412454a        nginx               "nginx -g 'daemon of…"   9 minutes ago       Exited (0) About a minute ago                       sharp_noether
+90e5c7e47ec8        httpd               "httpd-foreground"       9 minutes ago       Up 9 minutes                    80/tcp              interesting_heyrovsky
