@@ -1,0 +1,19 @@
+link to image in dockerhub = https://cloud.docker.com/repository/docker/stutommi/fav-environment
+
+explanation:
+
+Tools that I want in my environment right no:
+- Heroku CLI (for deploying webapps)
+- Nodejs (for building javascript apps)
+- Npm (for javascript projects)
+- GCC (for compiling C-language files)
+- Git (for version control in all of the above)
+
+Since I don't have that much stuff I need right now, it was quite easy to build an image with
+a Docker file based on the latest image. It had everything else mentioned above excluding Heroku, which I downloaded using curl.
+
+contents of docker file is the following:
+
+FROM node
+RUN curl https://cli-assets.heroku.com/install.sh | sh
+CMD bash
