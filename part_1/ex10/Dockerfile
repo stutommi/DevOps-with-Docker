@@ -1,7 +1,7 @@
 FROM node
 
 WORKDIR /usr/app
-COPY . .
+RUN git clone https://github.com/docker-hy/frontend-example-docker.git .
 RUN npm install
 EXPOSE 5000
 CMD npm start

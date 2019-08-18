@@ -2,8 +2,7 @@ FROM node
 
 WORKDIR /usr/app
 
-COPY package.json .
+RUN git clone https://github.com/docker-hy/backend-example-docker.git .
 RUN npm install
-COPY . .
 EXPOSE 8000
 CMD npm start
