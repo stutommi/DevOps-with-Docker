@@ -1,0 +1,39 @@
+version: '3.5'
+
+services:
+
+  front:
+    image: frontend
+    build:
+      context: ./
+      dockerfile: front.Dockerfile
+    ports:
+      - 5000:5000
+    container_name: ex06_front
+
+  back:
+    image: backend
+    build:
+      context: ./
+      dockerfile: back.Dockerfile
+    ports:
+      - 8000:8000
+    environment:
+      - REDIS=redis
+      - DB_USERNAME=postgres
+      - DB_PASSWORD=example
+      - DB_HOST=db
+    depends_on:
+      - db
+    container_name: ex06_back
+
+  redis:
+    image: redis
+    container_name: ex06_redis
+
+  db: 
+    image: postgres
+    restart: unless-stopped
+    environment:
+      POSTGRES_PASSWORD: example
+    container_name: ex06_db
