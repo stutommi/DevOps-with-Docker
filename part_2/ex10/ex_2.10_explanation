@@ -1,0 +1,9 @@
+I changed the following inside Dockerfiles:
+
+front.Dockerfile:
+  - CMD FRONT_URL=http://localhost:5000 npm start
+  + CMD API_URL=http://localhost/api npm start
+
+back.Dockerfile:
+  - CMD FRONT_URL=http://localhost:5000 npm start
+  + CMD FRONT_URL=http://localhost npm start

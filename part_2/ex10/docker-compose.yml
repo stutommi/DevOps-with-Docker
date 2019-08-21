@@ -1,0 +1,46 @@
+version: '3.5'
+
+services:
+
+  front:
+    image: frontend
+    build:
+      context: ./
+      dockerfile: front.Dockerfile
+    container_name: ex10_front
+
+  back:
+    image: backend
+    build:
+      context: ./
+      dockerfile: back.Dockerfile
+    environment:
+      - REDIS=redis
+      - DB_USERNAME=postgres
+      - DB_PASSWORD=example
+      - DB_HOST=db
+    depends_on:
+      - db
+    container_name: ex10_back
+
+  redis:
+    image: redis
+    container_name: ex10_redis
+
+  db: 
+    image: postgres
+    restart: unless-stopped
+    environment:
+      POSTGRES_PASSWORD: example
+    container_name: ex10_db
+
+  nginx:
+    image: nginx
+    volumes:
+      - ./nginx.conf:/etc/nginx/nginx.conf
+    depends_on:
+      - front
+      - back
+    ports:
+      - 80:80
+    container_name: ex10_proxy
