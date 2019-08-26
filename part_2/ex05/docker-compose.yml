@@ -8,7 +8,7 @@ services:
       dockerfile: front.Dockerfile
     ports:
       - 5000:5000
-    container_name: ex02_front
+    container_name: ex05_front
 
   back:
     image: backend
@@ -19,8 +19,18 @@ services:
       - 8000:8000
     environment:
       - REDIS=redis
-    container_name: ex02_back
+    depends_on:
+      - db
+    container_name: ex05_back
 
   redis:
     image: redis
-    container_name: ex02_redis
+    container_name: ex05_redis
+
+    db: 
+    image: postgres
+    restart: unless-stopped
+    environment:
+      POSTGRES_PASSWORD: example
+    container_name: ex05_db
+
